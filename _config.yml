@@ -1,23 +1,21 @@
 # Site settings
-title: Your Blog
-SEOTitle: 你的博客 | Your Blog
+title: Leo Blog
+SEOTitle: 卢浩的微博 | Leo Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
+email: 2753837446@qq.com
 description: ""
 keyword: ""
-url: "http://huangxuan.me"              # your host, for absolute URL
-baseurl: "/huxblog-boilerplate"         # for example, '/blog' if your blog hosted on 'host/blog'
+url: ""              # your host, for absolute URL
+baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
 # SNS settings
 RSS: false
-weibo_username:     huxpro
-zhihu_username:     huxpro
-github_username:    huxpro
-#twitter_username:  huxpro
-facebook_username:  huxpro
-
+weibo_username:     Leo
+github_username:    2753837446
+#twitter_username:  leo
+facebook_username:  leo
 
 
 # Build settings
@@ -82,8 +80,8 @@ featured-condition-size: 1              # A tag will be featured if the size of 
 # Friends
 friends: [
     {
-        title: "Hux Blog",
-        href: "http://huangxuan.me"
+        title: "Leo Blog",
+        href: "https:2753837446.github.io"
     },{
         title: "Foo",
         href: "#"
@@ -98,5 +96,3 @@ friends: [
         href: "#"
     }
 ]
-
-theme: jekyll-theme-slate
