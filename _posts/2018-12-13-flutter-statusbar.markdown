@@ -2,11 +2,11 @@
 layout:     post
 title:      "flutter设置沉浸式状态栏"
 subtitle:   "Android&Flutter"
-date:       2018年12月13日13:01:32
+date:       2018-12-13 13:01:32
 author:     "Luhao"
 header-img: "img/post-bg-2015.jpg"
 tags:
-    - 生活
+    - Flutter
 ---
 
 > “Yeah It's on. ”
