@@ -11,14 +11,36 @@ tags:
 
 > “Here, We are!”
 
+## Android 打包aar 修改release地址并且修改aar名称  兼容多渠道打包
+```
+    libraryVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.getPackageLibrary().destinationDir = new File(project.rootDir.absolutePath + "/release")
+        }
 
-## Android 打包aar 不打入BuildConfig
+        if (variant.buildType.name == 'release') {
+            variant.outputs.all { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('release.aar')) {
+                    outputFileName = "${project.name}-${variant.flavorName}-${defaultConfig.versionName}.aar"
+                }
+            }
+        }
+    }
 
 ```
-afterEvaluate {
-    generateReleaseBuildConfig.enabled = false
-    generateDebugBuildConfig.enabled = false
-}
+
+## Android 打包aar 不打入BuildConfig  兼容多渠道打包
+
+```
+    tasks.whenTaskAdded { task ->
+        if (task.name.contains('ReleaseBuildConfig')) {
+            task.enabled = false
+        }
+        if (task.name.contains('DebugBuildConfig')) {
+            task.enabled = false
+        }
+    }
 ```
 
 
