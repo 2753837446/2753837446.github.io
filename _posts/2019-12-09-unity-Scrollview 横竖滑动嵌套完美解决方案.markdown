@@ -18,6 +18,7 @@ tags:
 #### 横向滑动代码
 
 * 脚本配置在父ScrollView上, 配置页面宽度 和初始显示的页面index
+* 添加平滑移动和手动切换移动效果
 
 ```c#
 using System;
@@ -42,7 +43,7 @@ public class PageView : MonoBehaviour, IBeginDragHandler, IEndDragHandler {
 
     private float startDragHorizontal;
     public Transform toggleList;
-    public int ItemWidth;		//横向滑动页面宽度
+    public int ItemWidth;
     public int AutoIndex;
     void Start () {
         rect = transform.GetComponent<ScrollRect> ();
@@ -54,7 +55,7 @@ public class PageView : MonoBehaviour, IBeginDragHandler, IEndDragHandler {
         for (int i = 0; i < rect.content.transform.childCount; i++) {
             posList.Add (ItemWidth * i / horizontalLength);
         }
-        pageTo (AutoIndex);
+        pageToAutoIndex ();
     }
 
     void Update () {
@@ -69,9 +70,17 @@ public class PageView : MonoBehaviour, IBeginDragHandler, IEndDragHandler {
         }
     }
 
+    public void pageToAutoIndex () {
+        rect.horizontalNormalizedPosition = posList[AutoIndex];
+        SetPageIndex (AutoIndex);
+        GetIndex (AutoIndex);
+    }
+
     public void pageTo (int index) {
         if (index >= 0 && index < posList.Count) {
-            rect.horizontalNormalizedPosition = posList[index];
+            targethorizontal = posList[index];
+            stopMove = false;
+            startTime = 0;
             SetPageIndex (index);
             GetIndex (index);
         }
@@ -88,10 +97,6 @@ public class PageView : MonoBehaviour, IBeginDragHandler, IEndDragHandler {
         isDrag = true;
         //开始拖动
         startDragHorizontal = rect.horizontalNormalizedPosition;
-    }
-
-    private void OnDisable () {
-        pageTo (currentPageIndex);
     }
 
     public void OnEndDrag (PointerEventData eventData) {
@@ -121,7 +126,6 @@ public class PageView : MonoBehaviour, IBeginDragHandler, IEndDragHandler {
         isDrag = false;
         startTime = 0;
         stopMove = false;
-
 
     }
 
