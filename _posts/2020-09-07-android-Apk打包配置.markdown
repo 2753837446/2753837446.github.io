@@ -12,8 +12,8 @@ tags:
 > Let's go!
 
 
-
 ## 1. 配置多渠道数据
+```
 	    // 1.配置渠道
 	    flavorDimensions 'versionCode'
 	    productFlavors{
@@ -46,11 +46,13 @@ tags:
 	//        a4399 {
 	//        }
 	    }
+```
 
 ## 2. Android Gradle多渠道打包 改名 并且复制到指定目录下
 
 
-	    applicationVariants.all { variant ->
+```	    
+		applicationVariants.all { variant ->
 	        if (variant.buildType.name == "release") {
 	            variant.outputs.all { output ->
 	                def outputFile = output.outputFile
@@ -72,5 +74,6 @@ tags:
 	            }
 	        }
 	    }
+```
 
 
