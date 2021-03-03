@@ -11,6 +11,8 @@ tags:
 
 > Let's go!
 
+
+
 ## 1. 配置多渠道数据
 	    // 1.配置渠道
 	    flavorDimensions 'versionCode'
@@ -70,5 +72,5 @@ tags:
 	            }
 	        }
 	    }
-	
+
 
